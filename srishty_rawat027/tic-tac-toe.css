@@ -1,0 +1,41 @@
+.playing_area{
+/*    border: 2px solid black;*/
+    position: relative;
+    width: 7%;
+    left: 35%;
+    top : 150px;
+    
+}
+td{
+    width: 20%;
+    height: 50px;
+    padding: 12px;
+    
+}
+.one, .two, .four, .five{
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    border-collapse: collapse;
+    width: 20%;
+}
+.three, .six {
+    border-bottom: 2px solid black;
+    
+}
+.seven, .eight {
+    border-right: 2px solid black;
+    width: 20%;
+}
+.score_board{
+    position: relative;
+    width: 7%;
+    left: 33%;
+    top : 100px;  
+}
+input[type="button"]{
+    background: none;
+    width:50px;
+    height:50px;
+    border: none;
+    
+}
