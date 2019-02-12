@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Login_Page</title>
+
+	</head>
+	<body>
+		<h3>Hello Player!</h3><br>
+		<div class="main_area">
+			<form>  
+			<div class="container">
+    			<label for="uname">Username</label><br>
+    			<input class="input" type="text" placeholder="Enter Username" name="uname" id="usname"required><br>
+
+    			<label for="psw">Password</label><br>
+    			<input type="password" class="input" placeholder="Enter Password" name="psw" id="password" required><br>
+
+                <a type="button" class="button" href="tic-tac-toe.html" onclick="getdetails()">Login</a>
+    			<label>
+      			<input type="checkbox" class="input"  checked="checked" name="remember"> Remember me
+    			</label>
+  			</div>
+
+  			<div class="container" >
+    			
+    			<span class="psw">Forgot <a href="#">password?</a></span>
+  			</div>
+			</form>
+        </div>
+        		<script>
+            function getdetails(){
+                var username=document.getElementById("usname").value;
+                var password=document.getElementById("password").value;
+                localStorage.setItem("uname", username);
+                localStorage.setItem("password", password);
+            }
+        </script>
+			
+	</body>
+</html>

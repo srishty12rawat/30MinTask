@@ -2,9 +2,16 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-         <link rel="stylesheet" type="text/css" href="tic-tac-toe.css">
+         <link rel="stylesheet" type="text/css" href="stylesheet.css">
 		<title>Tic-tac-toe</title>
+		<script type="text/javascript"
+    src="http://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+  </script>
    <script>
+       var empdata={};
+       var username= localStorage.getItem('uname')
        var count= 0;
 
        function play(id){
@@ -55,8 +62,9 @@
                             var b = localStorage.getItem('player2score');
                             document.getElementById("pointsX").innerHTML = a;
                             document.getElementById("pointsY").innerHTML = b;
+                            post();
                         }
-           elseif(ch=='x')
+           else if(ch=='x')
                         {
                             var p1 = localStorage.getItem('player1score');
                             var p2 = localStorage.getItem('player2score');
@@ -72,17 +80,68 @@
                             var b = localStorage.getItem('player2score');
                             document.getElementById("pointsY").innerHTML = a;
                             document.getElementById("pointsX").innerHTML = b;
+                            post();
                         }
                        
               }
        
       }
        function get(){
+                            //alert("Welcome " + username + " to the game" );
+                            id=localStorage.getItem('uname');
+                            Url='http://localhost:55755/api/sign_up/';
+                            Url=Url+ id ;
+                            $.ajax({
+                            url: Url,
+                            type: 'GET',
+                            dataType: 'json',
+                            success: function(res){
+                            console.log(res);
+                            document.getElementById("pointsX").value=res.score;
+                                localStorage.setItem("player1score", res.score);
+                            
+                              }
+                        });           
                             var p1 = localStorage.getItem('player1score');
                             var p2 = localStorage.getItem('player2score');
                             document.getElementById("pointsX").value = parseInt(p1);
                             document.getElementById("pointsY").value = parseInt(p2);
        }
+       
+       
+       
+       function post(){
+                          var p1 = localStorage.getItem('player1score');
+                            var p2 = localStorage.getItem('player2score');
+                            document.getElementById("pointsX").value = parseInt(p1);
+                            document.getElementById("pointsY").value = parseInt(p2);
+                            //alert("Welcome " + username + " to the game" );
+                            id=localStorage.getItem('uname');
+                            var aa = localStorage.getItem("pointsX")
+                            Url='http://localhost:55755/api/sign_up/';
+                            Url=Url+ id ;
+                            var data = {
+                                "username": id,
+                                "password": password,
+                                "score": aa
+                            };
+                            console.log(aa);
+                            $.ajax({
+                            url: Url,
+                            type: 'PUT',
+                            data: data, 
+                            dataType: 'json',
+                            success: function(res){
+                            console.log(res);
+                            document.getElementById("pointsX").value=res.score;
+                            
+                              }
+                        });                 
+
+       }
+       
+       
+       
     </script>
     </head>
     <body onload="get()">
